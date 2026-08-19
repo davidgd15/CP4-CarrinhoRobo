@@ -1,9 +1,3 @@
-Você tem razão. O que eu mandei estava renderizado como documento, não como conteúdo bruto de um README.md.
-
-Abaixo está o arquivo em Markdown puro. Copie tudo dentro do bloco para um arquivo chamado README.md:
-
-# Smart Video Car Kit V2.0 — Raspberry Pi
-
 ## Documentação Técnica
 
 Projeto de desenvolvimento e documentação de um **Smart Video Car Kit V2.0**, utilizando uma **Raspberry Pi** como unidade principal de processamento e controle.
