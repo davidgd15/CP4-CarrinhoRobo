@@ -183,7 +183,7 @@ A estrutura lógica das conexões é:
                     Motor E       Motor D
 
 
-#10. Fluxo de Controle
+# 10. Fluxo de Controle
 O funcionamento lógico do sistema pode ser representado da seguinte forma:
 
                  +-------+
@@ -221,7 +221,7 @@ O funcionamento lógico do sistema pode ser representado da seguinte forma:
                              v
                     Movimentação do robô
 
-#11. Sistema de Alimentação
+# 11. Sistema de Alimentação
 O sistema de alimentação é responsável por fornecer energia para a Raspberry Pi, o driver dos motores e os demais componentes eletrônicos.
 
 A alimentação deve ser distribuída de acordo com as necessidades de cada componente.
@@ -230,7 +230,7 @@ A Raspberry Pi necessita de uma alimentação compatível com sua especificaçã
 
 Por esse motivo, a alimentação dos motores deve ser realizada através do sistema apropriado para o driver utilizado, evitando utilizar diretamente os pinos de alimentação da Raspberry Pi para alimentar os motores.
 
-#12. Diagrama de Alimentação
+# 12. Diagrama de Alimentação
 O fluxo geral de alimentação do projeto é representado abaixo:
 
                        +-----------+
@@ -259,7 +259,7 @@ A distribuição apresentada representa a arquitetura geral do sistema.
 
 As tensões e correntes devem seguir as especificações dos componentes utilizados no projeto.
 
-#13. Organização da Alimentação e dos Cabos
+# 13. Organização da Alimentação e dos Cabos
 Os cabos de alimentação e de sinal devem ser organizados de maneira a evitar interferências e facilitar a manutenção.
 
 Os principais critérios de organização são:
@@ -277,7 +277,7 @@ Manter comprimento suficiente para permitir manutenção.
 A organização da fiação também deve impedir que os cabos se soltem durante a movimentação do robô.
 
 
-#14. Conclusão
+# 14. Conclusão
 O Smart Video Car Kit V2.0 foi estruturado utilizando a Raspberry Pi como unidade principal de processamento e controle.
 
 As adequações realizadas no chassi têm como objetivo acomodar os componentes eletrônicos, organizar a fiação e manter uma distribuição adequada dos elementos mecânicos e eletrônicos.
