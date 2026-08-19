@@ -1,97 +1,84 @@
-# Documentação Técnica — Chassi do Robô Arduino
+Documentação Técnica
 
-## Equipe
+Projeto de desenvolvimento e documentação de um Smart Video Car Kit V2.0, utilizando uma Raspberry Pi como unidade principal de processamento e controle.
 
-| Integrante | RM |
-|---|---|
-| David Denunci | RM98603 |
-| Fernando Popolili | RM99919 |
-| Lucas de Toledo | RM97913 |
-| Matheus Zanardi | RM98832 |
-| Augusto Milreu | RM98245 |
+Equipe
+Integrante	RM
+David Denunci	RM98603
+Fernando Popolili	RM99919
+Lucas de Toledo	RM97913
+Matheus Zanardi	RM98832
+Augusto Milreu	RM98245
+1. Sobre o Projeto
 
----
+O projeto consiste na utilização e adaptação de um Smart Video Car Kit V2.0 para Raspberry Pi, composto por uma estrutura mecânica com motores DC, rodas, sistema de alimentação e componentes eletrônicos responsáveis pelo controle e movimentação do robô.
 
-## 1. Ficha de Requisitos
+A Raspberry Pi atua como a unidade principal de processamento do sistema, sendo responsável pelo controle dos componentes eletrônicos e pelo processamento das informações recebidas pelos periféricos.
 
-### 1.1 Dimensões gerais do chassi
+A documentação apresenta as principais características do chassi, as modificações estruturais, a organização dos componentes eletrônicos, as conexões entre os módulos e o sistema de alimentação do projeto.
 
-| Parâmetro | Valor |
-|---|---|
-| Comprimento total | 180 mm |
-| Largura total | 120 mm |
-| Espessura da placa principal | 4 mm |
-| Raio dos cantos arredondados | 10 mm |
-| Material sugerido | Chapa rígida (acrílico/MDF/impressão 3D) |
-| Simetria | Ao longo da linha de centro longitudinal |
+2. Objetivos
 
-### 1.2 Quantidade e tipo de motores
+Os principais objetivos do projeto são:
 
-| Parâmetro | Valor |
-|---|---|
-| Quantidade de motores DC | 2 (um de cada lado, simétricos) |
-| Tipo | Motor DC com caixa de redução (gearbox) |
-| Diâmetro da roda | ~65 mm |
-| Largura da roda | ~25 mm |
-| Altura do eixo em relação à base | ~35 mm |
-| Apoio auxiliar | Roda castor (ball caster) centralizada, eixo longitudinal |
+Utilizar a Raspberry Pi como unidade de controle do robô;
+Adaptar a estrutura do chassi para acomodar os componentes eletrônicos;
+Organizar os componentes de forma segura e funcional;
+Documentar as conexões eletrônicas do projeto;
+Documentar o sistema de alimentação;
+Planejar a organização dos cabos e componentes;
+Facilitar futuras manutenções e alterações no projeto.
+3. Componentes Principais
+Componente	Função
+Raspberry Pi	Processamento e controle do robô
+Driver/controlador de motores	Controle dos motores DC
+Motores DC	Movimentação do robô
+Rodas	Transmissão do movimento
+Roda caster	Apoio e estabilidade
+Câmera	Captura de vídeo
+Sistema de alimentação	Fornecimento de energia aos componentes
+4. Requisitos do Chassi
+4.1 Características gerais
 
-### 1.3 Placa controladora
+O chassi do Smart Video Car Kit V2.0 é responsável pela sustentação dos componentes mecânicos e eletrônicos do robô.
 
-| Parâmetro | Valor |
-|---|---|
-| Placa | Arduino Uno |
-| Dimensões aproximadas | 68,6 mm × 53,4 mm |
-| Posição | Centro da região superior do chassi |
-| Furos de fixação | 4 furos, Ø 3,2 mm |
-| Observações | Espaço livre reservado para conectores USB e alimentação |
+Parâmetro	Especificação
+Estrutura	Chassi do Smart Video Car Kit V2.0
+Quantidade de motores	2 motores DC
+Tração	Duas rodas motrizes
+Apoio	Roda caster
+Controlador principal	Raspberry Pi
+Sistema de controle	Eletrônico
+Alimentação	Sistema de bateria do projeto
+Distribuição	Simétrica em relação ao eixo longitudinal
+5. Mudanças na Estrutura do Chassi
 
-### 1.4 Posição dos componentes
+A estrutura original do Smart Video Car Kit V2.0 foi utilizada como base para a montagem do projeto.
 
-| Componente | Posição no chassi |
-|---|---|
-| Arduino Uno | Centro superior |
-| Suporte de bateria (4×AA) | Traseira, centralizado |
-| Motores DC | Laterais, simétricos, região central/traseira |
-| Rodas | Laterais, alinhadas ao eixo dos motores |
-| Roda castor (caster) | Frente (ou traseira), centralizada no eixo longitudinal |
-| Furos de passagem de cabos | Próximos ao Arduino e ao suporte de bateria |
-| Furos de ventilação/alívio de peso | Áreas sem função estrutural, distribuídos pela placa |
-| Furos de fixação de parafusos | Perímetro do chassi |
+A organização do chassi foi planejada considerando o espaço necessário para instalação dos componentes eletrônicos, a distribuição de peso, a passagem dos cabos e a movimentação das partes mecânicas.
 
-### 1.5 Suporte de bateria
+As principais adequações realizadas ou previstas são:
 
-| Parâmetro | Valor |
-|---|---|
-| Tipo | Suporte para 4 pilhas AA |
-| Dimensões aproximadas | 65 mm × 60 mm × 18 mm |
-| Posição | Região traseira do chassi |
-| Fixação | Furos/slots de fixação + espaço para fio e conector |
+Definição de uma área para instalação da Raspberry Pi;
+Definição da posição do driver dos motores;
+Reserva de espaço para o sistema de alimentação;
+Organização da fiação;
+Definição dos pontos de passagem dos cabos;
+Fixação dos componentes eletrônicos;
+Manutenção de espaço livre para as rodas e motores;
+Organização dos componentes para facilitar a manutenção;
+Utilização de abraçadeiras e organizadores para evitar cabos soltos.
 
-### 1.6 Carenagem (cobertura)
+A distribuição dos componentes busca manter o robô equilibrado, evitando concentração excessiva de peso em uma única região do chassi.
 
-| Parâmetro | Descrição |
-|---|---|
-| Função | Proteger componentes eletrônicos (Arduino, fiação, bateria) contra poeira e impactos leves |
-| Fixação | Encaixe sobre os furos de parafuso do perímetro do chassi, ou suportes tipo coluna (standoffs) |
-| Material sugerido | Mesmo material do chassi ou acrílico transparente para inspeção visual |
-| Observação | Deve permitir acesso à porta USB e ao conector de alimentação sem remoção total da cobertura |
+6. Organização dos Componentes
 
----
+A organização física dos componentes foi planejada considerando três fatores principais:
 
-## 2. Croqui do Chassi
+Distribuição de peso;
+Facilidade de manutenção;
+Organização e proteção da fiação.
 
-O croqui técnico (vistas superior, inferior, frontal, lateral e isométrica, com cotas em milímetros) foi desenvolvido como referência visual para fabricação, no padrão de desenho técnico/CAD. A ilustração com as cinco vistas e as anotações dimensionais está anexada como imagem de apoio a este documento (ver seção de anexos no repositório, pasta `/docs/croqui/`).
+A Raspberry Pi deve permanecer em uma posição que permita acesso aos seus conectores e aos pinos GPIO utilizados no projeto.
 
-Principais cotas representadas no croqui:
-
-- Comprimento total: 180 mm / Largura total: 120 mm
-- Espessura da placa: 4 mm / Raio de canto: 10 mm
-- Posição e furos de fixação do Arduino (Ø 3,2 mm)
-- Área e furos do suporte de bateria (65 × 60 mm)
-- Posição simétrica dos motores e diâmetro/largura das rodas (Ø 65 mm × 25 mm)
-- Altura do eixo das rodas (35 mm da base)
-- Posição da roda castor central
-- Furos de passagem de cabos, ventilação e fixação de parafusos no perímetro
-
----
+O driver dos motores deve permanecer próximo aos motores, reduzindo o comprimento dos cabos
