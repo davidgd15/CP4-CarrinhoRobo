@@ -2,84 +2,149 @@
 
 ## 1. Descrição do Projeto
 
-O AviRonda é um projeto de robótica desenvolvido no âmbito do FIAP, com o objetivo de apoiar a monitorização das condições ambientais em aviários.
+O **AviRonda** é um projeto de robótica desenvolvido no âmbito da FIAP, com o objetivo de apoiar a monitorização ambiental em aviários através da integração de sensores, robótica e Inteligência Artificial.
 
-A solução utiliza um Raspberry Pi para processar informações de temperatura e humidade, aplicar um modelo de Inteligência Artificial e apresentar uma classificação do ambiente.
+A solução utiliza um Raspberry Pi para obter e processar informações de temperatura e humidade, aplicar um modelo de Machine Learning e classificar as condições ambientais.
+
+A partir dessa classificação, o sistema pode sinalizar o estado do ambiente através de LEDs e armazenar o histórico das informações recolhidas.
 
 ## 2. Objetivos
 
-- Monitorizar temperatura e humidade.
-- Processar dados ambientais através de um modelo de Machine Learning.
+- Monitorizar as condições de temperatura e humidade.
+- Processar dados ambientais através de Inteligência Artificial.
 - Classificar as condições como ADEQUADO ou ALERTA.
-- Sinalizar o estado através de LEDs.
-- Registar o histórico de leituras num ficheiro CSV.
+- Sinalizar visualmente as condições identificadas.
+- Armazenar o histórico de leituras num ficheiro CSV.
+- Demonstrar a aplicação da robótica e da IA no apoio à monitorização ambiental.
 
-## 3. Arquitetura
+## 3. Arquitetura do Sistema
 
-O fluxo de funcionamento previsto é:
+O funcionamento do AviRonda está organizado no seguinte fluxo:
 
-1. Obtenção dos dados ambientais.
-2. Processamento dos valores no Raspberry Pi.
-3. Classificação através do modelo de Inteligência Artificial.
-4. Identificação do estado ambiental.
-5. Sinalização através dos LEDs.
-6. Registo do histórico em CSV.
+1. Obtenção dos dados de temperatura e humidade.
+2. Envio das informações para processamento no Raspberry Pi.
+3. Análise dos valores pelo modelo de Inteligência Artificial.
+4. Classificação das condições ambientais.
+5. Sinalização do resultado através dos LEDs.
+6. Registo das informações num histórico CSV.
+
+A arquitetura foi organizada em módulos independentes para facilitar a manutenção e a evolução do projeto.
 
 ## 4. Tecnologias Utilizadas
 
 - Python
 - Raspberry Pi
+- DHT11
 - NumPy
 - Scikit-learn
-- Random Forest
+- Random Forest Classifier
 - Joblib
 - CSV
 - GPIO Zero
+- Visual Studio Code
+- Git e GitHub
 
 ## 5. Inteligência Artificial
 
-O projeto utiliza um modelo Random Forest Classifier para classificar condições de temperatura e humidade.
+O AviRonda utiliza um modelo **Random Forest Classifier**, desenvolvido com Scikit-learn, para analisar os valores de temperatura e humidade.
 
-O modelo foi treinado com um conjunto de dados gerados para desenvolvimento, utilizando regras de classificação provisórias.
+O modelo foi treinado com dados sintéticos, utilizando limites ambientais provisórios para definir duas categorias:
 
-A avaliação inicial apresentou uma acurácia de aproximadamente 99,95% nesse conjunto de teste sintético. Este resultado não representa uma validação em condições reais de aviários.
+- **ADEQUADO:** valores dentro dos intervalos configurados.
+- **ALERTA:** valores fora dos intervalos configurados.
 
-## 6. Sinalização Visual
+A avaliação inicial apresentou aproximadamente 99,95% de acurácia num conjunto de teste sintético.
 
-O sistema prevê dois indicadores:
+Esse resultado demonstra o funcionamento do modelo dentro das regras utilizadas no treinamento, não representando uma validação científica ou uma garantia de desempenho em aviários reais.
 
-- LED verde: ambiente classificado como ADEQUADO.
-- LED vermelho: ambiente classificado como ALERTA.
+## 6. Monitorização Ambiental e Sinalização Visual
 
-## 7. Registo de Dados
+O sistema foi estruturado para trabalhar com um sensor DHT11, responsável pela obtenção de informações de temperatura e humidade.
 
-As informações são guardadas em `logs/leituras_avironda.csv`, incluindo:
+A classificação produzida pela Inteligência Artificial é associada a dois indicadores visuais:
 
-- Data e hora.
+- **LED verde:** ambiente classificado como ADEQUADO.
+- **LED vermelho:** ambiente classificado como ALERTA.
+
+Quando não é possível utilizar o sensor físico, o sistema dispõe de uma fonte de dados gerados por software para permitir a demonstração e os testes da lógica de processamento.
+
+## 7. Registo e Histórico de Dados
+
+O AviRonda possui um módulo responsável pelo armazenamento das informações num ficheiro CSV localizado em:
+
+`logs/leituras_avironda.csv`
+
+Cada registo contém:
+
+- Data e hora da leitura.
 - Temperatura.
 - Humidade.
-- Classificação.
-- Confiança do modelo.
+- Classificação ambiental.
+- Confiança indicada pelo modelo.
 - Origem dos dados.
 
-## 8. Estado do Desenvolvimento
+A identificação da origem permite distinguir os dados gerados por software das futuras medições obtidas através do sensor físico.
 
-- [x] Estrutura inicial do projeto.
-- [x] Fonte de dados para testes.
-- [x] Treinamento do modelo de IA.
-- [x] Módulo de previsão.
-- [x] Registo histórico CSV.
-- [x] Módulo de controlo dos LEDs.
-- [ ] Validação do sensor DHT11.
-- [ ] Testes integrados no Raspberry Pi.
-- [ ] Demonstração física completa.
+## 8. Organização do Projeto
 
-## 9. Limitações
+O código foi dividido em módulos independentes, organizados por responsabilidade:
 
-A classificação depende dos limites ambientais configurados no sistema. Estes limites são provisórios e necessitam de validação adequada antes de uma utilização em aviários reais.
+```text
+Avironda/
+├── ai/
+│   ├── modelo_avironda.pkl
+│   ├── predict.py
+│   ├── train_model.py
+│   └── test_model.py
+├── config/
+│   └── configuracoes.py
+├── leds/
+│   └── controlo_leds.py
+├── logs/
+│   ├── leituras_avironda.csv
+│   └── registar_leitura.py
+├── sensores/
+│   └── fonte_dados.py
+├── README.MD
+└── .gitignore
+```
 
-O sensor DHT11 ainda necessita de validação física. Os dados gerados para desenvolvimento não devem ser interpretados como medições reais.
+Essa organização separa a inteligência artificial, a configuração, o controlo dos LEDs, a gestão dos dados e os módulos relacionados com os sensores.
 
-## 10. Objetivo Final
+## 9. Integração com o Carrinho Robótico
 
-Desenvolver um sistema robótico capaz de apoiar a monitorização ambiental em aviários, combinando robótica, sensores, processamento de dados e Inteligência Artificial.
+O AviRonda foi desenvolvido dentro do repositório original do carrinho robótico, como um módulo independente.
+
+A implementação mantém separação em relação aos códigos originais dos projetos CP1 e CP2, preservando os módulos responsáveis pela movimentação do carrinho e pela deteção de movimento.
+
+Essa abordagem permite acrescentar novas funcionalidades sem comprometer os recursos já desenvolvidos.
+
+## 10. Testes e Validação
+
+Foram realizados testes de software no ambiente Windows, com resultados que demonstraram:
+
+- Geração de valores simulados de temperatura e humidade.
+- Processamento dos dados pelo modelo de Inteligência Artificial.
+- Classificação dos ambientes como ADEQUADO ou ALERTA.
+- Apresentação da confiança indicada pelo modelo.
+- Registo automático das informações no histórico CSV.
+
+Os testes confirmaram o funcionamento integrado dos módulos de geração de dados, previsão e armazenamento.
+
+O controlo físico dos LEDs e a integração completa com o Raspberry Pi são etapas de validação no hardware.
+
+## 11. Limitações e Considerações
+
+Os limites ambientais utilizados para a classificação são provisórios e necessitam de validação técnica de acordo com as características do aviário, a espécie e a idade das aves.
+
+O sensor DHT11 necessita de validação física para confirmar a fiabilidade das leituras.
+
+Os dados gerados por software são utilizados exclusivamente para desenvolvimento e demonstração, não devendo ser interpretados como medições reais do ambiente.
+
+A confiança apresentada pelo modelo corresponde à estimativa produzida pelo classificador e não representa uma garantia de exatidão.
+
+## 12. Objetivo Final
+
+O objetivo do AviRonda é demonstrar como a integração entre robótica, sensores, processamento de dados e Inteligência Artificial pode contribuir para a monitorização ambiental em aviários.
+
+A proposta procura desenvolver uma solução modular, acessível e expansível, capaz de identificar condições ambientais que mereçam atenção e apoiar a tomada de decisões através de sinalização visual e registo histórico.
