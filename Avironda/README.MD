@@ -2,6 +2,8 @@
 
 ## 1. Descrição do Projeto
 
+link video do projeto: https://www.youtube.com/watch?v=HAiARoLpH-0
+
 O **AviRonda** é um projeto de robótica desenvolvido no âmbito da FIAP, com o objetivo de apoiar a monitorização ambiental em aviários através da integração de sensores, robótica e Inteligência Artificial.
 
 A solução utiliza um Raspberry Pi e um sensor DHT11 para obter informações de temperatura e humidade, processar os dados através de um modelo de Machine Learning e classificar as condições ambientais.
